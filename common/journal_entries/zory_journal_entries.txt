@@ -7,14 +7,18 @@ je_zory_economic_school = {
 
     weight = 200
 
-    should_be_pinned_by_default = yes
+    should_be_pinned_by_default_uninvolved_or_context = yes
 
     is_shown_when_inactive = {
-        always = no
+    country_has_primary_culture = cu:polish
+
+    NOT = {
+        has_variable = zory_school_started
     }
+}
 
     possible = {
-        always = yes
+        has_variable = zory_school_unlocked
     }
 
     scripted_progress_bar = zory_economic_school_progress

@@ -2,10 +2,13 @@
 zory_found_economic_school = {
 
     is_shown = {
-
         is_ai = no
 
         country_has_primary_culture = cu:polish
+
+        NOT = {
+            has_variable = zory_school_unlocked
+        }
 
         NOT = {
             has_variable = zory_school_started
@@ -13,19 +16,11 @@ zory_found_economic_school = {
     }
 
     possible = {
-
         has_technology_researched = academia
-
-        NOT = {
-            has_journal_entry = je_zory_economic_school
-        }
     }
 
     when_taken = {
-
-        add_journal_entry = {
-            type = je_zory_economic_school
-        }
+        set_variable = zory_school_unlocked
     }
 
     ai_chance = {

@@ -1,4 +1,4 @@
-
+﻿
 zory_economic_school_progress = {
 
     name = "zory_economic_school_progress"
