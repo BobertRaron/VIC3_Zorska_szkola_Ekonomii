@@ -1,0 +1,94 @@
+﻿namespace = zory_events
+
+zory_events.1 = {
+
+    type = country_event
+    placement = root
+
+    title = zory_events.1.t
+    desc = zory_events.1.d
+    flavor = zory_events.1.f
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+    duration = 3
+
+    option = {
+
+        name = zory_events.1.a
+
+        scope:journal_entry = {
+            add_progress = {
+                name = zory_economic_school_progress
+                value = -10
+            }
+        }
+
+        ai_chance = {
+            base = 50
+        }
+    }
+
+    option = {
+
+        name = zory_events.1.b
+
+        scope:journal_entry = {
+            add_progress = {
+                name = zory_economic_school_progress
+                value = 10
+            }
+        }
+
+        ai_chance = {
+            base = 50
+        }
+    }
+
+    option = {
+        name = zory_events.1.c
+        default_option = yes
+
+        ai_chance = {
+            base = 0
+        }
+    }
+}
+
+zory_events.2 = {
+
+    type = country_event
+    placement = root
+
+    title = zory_events.2.t
+    desc = zory_events.2.d
+    flavor = zory_events.2.f
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+    duration = 3
+
+    option = {
+        name = zory_events.2.a
+        default_option = yes
+    }
+}
+
+zory_events.3 = {
+
+    type = country_event
+    placement = root
+
+    title = zory_events.3.t
+    desc = zory_events.3.d
+    flavor = zory_events.3.f
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+    duration = 3
+
+    option = {
+        name = zory_events.3.a
+        default_option = yes
+    }
+}

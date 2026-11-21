@@ -1,0 +1,81 @@
+﻿je_zory_economic_school = {
+
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+    weight = 200
+
+    is_shown_when_inactive = {
+        always = no
+    }
+
+    group = je_group_zory_economics
+
+    scripted_progress_bar = zory_economic_school_progress
+
+    immediate = {
+        set_variable = zory_school_started
+    }
+
+    on_monthly_pulse = {
+        random_events = {
+            70 = 0
+            30 = zory_events.1
+        }
+    }
+
+    outcome = {
+
+        header = zory_krawczyk_victory
+        effect_header = je_standard_on_completion_header
+        color = "gold_positive"
+        conclusion_desc = zory_krawczyk_victory_desc
+
+        trigger = {
+            scope:journal_entry = {
+                scripted_bar_progress(zory_economic_school_progress) <= 0
+            }
+        }
+
+        effect = {
+
+            ig:ig_intelligentsia = {
+                add_ideology = ideology_krawczykism
+            }
+
+            set_variable = zory_school_finished
+
+            trigger_event = {
+                id = zory_events.2
+                popup = yes
+            }
+        }
+    }
+
+    outcome = {
+
+        header = zory_baron_victory
+        effect_header = je_standard_on_completion_header
+        color = "gold_positive"
+        conclusion_desc = zory_baron_victory_desc
+
+        trigger = {
+            scope:journal_entry = {
+                scripted_bar_progress(zory_economic_school_progress) >= 100
+            }
+        }
+
+        effect = {
+
+            ig:ig_intelligentsia = {
+                add_ideology = ideology_baronism
+            }
+
+            set_variable = zory_school_finished
+
+            trigger_event = {
+                id = zory_events.3
+                popup = yes
+            }
+        }
+    }
+}

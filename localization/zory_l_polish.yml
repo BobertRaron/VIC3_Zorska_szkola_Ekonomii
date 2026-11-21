@@ -1,0 +1,38 @@
+﻿l_polish:
+ zory_found_economic_school:0 "Powołanie Żorskiej Szkoły Ekonomii"
+ zory_found_economic_school_desc:0 "Powołanie nowego ośrodka myśli ekonomicznej pozwoli wypracować doktrynę gospodarczą odpowiadającą wyzwaniom współczesności."
+
+ je_zory_economic_school:0 "Żorska Szkoła Ekonomii"
+ je_zory_economic_school_reason:0 "W Żorach narodził się nowy nurt myśli ekonomicznej. Jego przedstawiciele podzielili się na dwa rywalizujące obozy: zwolenników Krawczyka, postulujących aktywną rolę państwa w gospodarce, oraz zwolenników Barona, upatrujących źródła dobrobytu w nieskrępowanej działalności jednostek. Wynik tego intelektualnego sporu zadecyduje o przyszłości naszej myśli ekonomicznej."
+
+ zory_economic_school_progress:0 "Rywalizacja doktryn"
+ zory_economic_school_progress_desc:0 "Niskie wartości oznaczają przewagę szkoły krawczykowskiej, wysokie zaś szkoły baronowskiej."
+
+ ideology_krawczykism:0 "Krawczykowska"
+ ideology_krawczykism_desc:0 "#lore Ideologia ta zakłada, że mechanizmy rynkowe wymagają odpowiedniego nadzoru państwa, a dobrobyt społeczeństwa nie może pozostawać wyłącznie w rękach prywatnego kapitału.#!"
+
+ ideology_baronism:0 "Baronowska"
+ ideology_baronism_desc:0 "#lore Ideologia ta głosi, że wolność gospodarcza stanowi fundament dobrobytu, a każda nieuzasadniona ingerencja państwa zakłóca naturalny porządek ekonomiczny.#!"
+
+ zory_krawczyk_victory:0 "Triumf szkoły krawczykowskiej"
+ zory_krawczyk_victory_desc:0 "Inteligencja przyjęła doktrynę interwencjonizmu państwowego."
+
+ zory_baron_victory:0 "Triumf szkoły baronowskiej"
+ zory_baron_victory_desc:0 "Inteligencja przyjęła doktrynę leseferyzmu."
+
+ zory_events.1.t:0 "Wielka debata żorska"
+ zory_events.1.d:0 "Kolejne posiedzenie Żorskiej Szkoły Ekonomii przerodziło się w zażarty spór dotyczący roli państwa w gospodarce. Przedstawiciele obu doktryn zabiegają o uznanie środowiska akademickiego."
+ zory_events.1.f:0 "Po sześciu godzinach dyskusji, trzech dzbankach kawy i licznych oskarżeniach o nieznajomość podstaw ekonomii nie udało się osiągnąć porozumienia."
+ zory_events.1.a:0 "Rynek potrzebuje rozumnego państwa."
+ zory_events.1.b:0 "Pozwólmy działać niewidzialnej ręce rynku."
+ zory_events.1.c:0 "Panowie, to miała być przerwa obiadowa."
+
+ zory_events.2.t:0 "Widzialna ręka Krawczyka"
+ zory_events.2.d:0 "Po latach intelektualnych zmagań szkoła krawczykowska zdobyła dominującą pozycję wśród naszej inteligencji. Ekonomiści coraz częściej wskazują na konieczność aktywnego udziału państwa w kształtowaniu gospodarki."
+ zory_events.2.f:0 "Niewidzialna ręka rynku, jak się okazało, potrzebowała widzialnego urzędnika."
+ zory_events.2.a:0 "Państwo wie lepiej."
+
+ zory_events.3.t:0 "Niewidzialna ręka Barona"
+ zory_events.3.d:0 "Szkoła baronowska odniosła decydujące zwycięstwo w sporze o przyszłość gospodarki. Inteligencja uznała wolność gospodarczą oraz ograniczenie ingerencji państwa za podstawowe warunki rozwoju ekonomicznego."
+ zory_events.3.f:0 "Komisję do spraw ograniczenia biurokracji rozwiązano, zanim zdążyła powołać podkomisję."
+ zory_events.3.a:0 "Laissez faire, laissez passer!"
