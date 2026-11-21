@@ -1,0 +1,33 @@
+
+zory_economic_school_progress = {
+
+    name = "zory_economic_school_progress"
+    desc = "zory_krawczyk_side"
+    second_desc = "zory_baron_side"
+
+    start_value = 50
+    min_value = 0
+    max_value = 100
+
+    default = yes
+    marker = yes
+
+    monthly_progress = {
+
+        if = {
+            limit = {
+                has_law = law_type:law_interventionism
+            }
+
+            add = -1
+        }
+
+        if = {
+            limit = {
+                has_law = law_type:law_laissez_faire
+            }
+
+            add = 1
+        }
+    }
+}

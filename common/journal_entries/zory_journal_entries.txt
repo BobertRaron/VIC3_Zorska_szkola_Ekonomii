@@ -1,14 +1,21 @@
-﻿je_zory_economic_school = {
+﻿
+je_zory_economic_school = {
+
+    group = je_group_zory_economics
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 
     weight = 200
 
+    should_be_pinned_by_default = yes
+
     is_shown_when_inactive = {
         always = no
     }
 
-    group = je_group_zory_economics
+    possible = {
+        always = yes
+    }
 
     scripted_progress_bar = zory_economic_school_progress
 
@@ -31,9 +38,7 @@
         conclusion_desc = zory_krawczyk_victory_desc
 
         trigger = {
-            scope:journal_entry = {
-                scripted_bar_progress(zory_economic_school_progress) <= 0
-            }
+            "scope:journal_entry.scripted_bar_progress(zory_economic_school_progress)" <= 0
         }
 
         effect = {
@@ -41,8 +46,6 @@
             ig:ig_intelligentsia = {
                 add_ideology = ideology_krawczykism
             }
-
-            set_variable = zory_school_finished
 
             trigger_event = {
                 id = zory_events.2
@@ -59,9 +62,7 @@
         conclusion_desc = zory_baron_victory_desc
 
         trigger = {
-            scope:journal_entry = {
-                scripted_bar_progress(zory_economic_school_progress) >= 100
-            }
+            "scope:journal_entry.scripted_bar_progress(zory_economic_school_progress)" >= 100
         }
 
         effect = {
@@ -69,8 +70,6 @@
             ig:ig_intelligentsia = {
                 add_ideology = ideology_baronism
             }
-
-            set_variable = zory_school_finished
 
             trigger_event = {
                 id = zory_events.3
