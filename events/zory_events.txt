@@ -66,6 +66,10 @@ zory_events.2 = {
 
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 
+    event_image = {
+    texture = "gfx/event_pictures/zory_group_photo.dds"
+    }
+
     duration = 3
 
     option = {

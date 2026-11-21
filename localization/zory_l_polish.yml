@@ -3,15 +3,15 @@
  zory_found_economic_school_desc:0 ""
 
  je_zory_economic_school:0 "Żorska Szkoła Ekonomii"
- je_zory_economic_school_reason:0 "W Żorach narodził się nowy nurt myśli ekonomicznej. Jego przedstawiciele podzielili się na dwa rywalizujące obozy: zwolenników Krawczyka, postulujących aktywną rolę państwa w gospodarce, oraz zwolenników Barona, upatrujących źródła dobrobytu w nieskrępowanej działalności jednostek. Wynik tego intelektualnego sporu zadecyduje o przyszłości naszej myśli ekonomicznej."
+ je_zory_economic_school_reason:0 "Nad Europą Wschodnią zawisło widmo ekonomii żorskiej. Z Warszawy dobiegają głosy zwolenników von Krawczyka, wzywających do podporządkowania sił rynkowych rozumnemu kierownictwu państwa. Tymczasem w Kijowie coraz większą popularność zdobywają pisma Baronova, głoszące wyższość wolnej przedsiębiorczości nad państwowym planowaniem. Dwie doktryny, dwa państwa, jedna linia. Rozstrzygnięcie tego sporu zadecyduje o gospodarczym obliczu całego regionu."
 
  zory_economic_school_progress:0 "Rywalizacja doktryn"
  zory_economic_school_progress_desc:0 "Niskie wartości oznaczają przewagę szkoły krawczykowskiej, wysokie zaś szkoły baronowskiej."
 
- ideology_krawczykism:0 "Krawczykowska"
- ideology_krawczykism_desc:0 "#lore Ideologia ta zakłada, że mechanizmy rynkowe wymagają odpowiedniego nadzoru państwa, a dobrobyt społeczeństwa nie może pozostawać wyłącznie w rękach prywatnego kapitału.#!"
+ ideology_krawczykism:0 "Krawczykizm"
+ ideology_krawczykism_desc:0 "#lore Każde dziecko powinno mieć prawo do nauki, każdy przedsiębiorca powinien podlegać kontroli państwa, a każda kobieta powinna mieć kogoś, kto podejmie za nią decyzję.#!"
 
- ideology_baronism:0 "Baronowska"
+ ideology_baronism:0 "Baronizm"
  ideology_baronism_desc:0 "#lore Ideologia ta głosi, że wolność gospodarcza stanowi fundament dobrobytu, a każda nieuzasadniona ingerencja państwa zakłóca naturalny porządek ekonomiczny.#!"
 
  zory_krawczyk_victory:0 "Triumf szkoły krawczykowskiej"
