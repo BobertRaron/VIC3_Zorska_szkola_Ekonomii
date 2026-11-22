@@ -1,0 +1,31 @@
+﻿zory_promote_school_button = {
+    name = zory_promote_school_button
+    desc = zory_promote_school_button_desc
+
+    visible = { always = yes }
+
+    possible = {
+        NOT = { has_modifier = zory_campaign_bureaucracy_cost }
+        any_political_movement = {
+            is_political_movement_type = movement_zory_economic_school
+        }
+    }
+
+    ai_chance = { value = 0 }
+
+    effect = {
+        every_political_movement = {
+            limit = {
+                is_political_movement_type = movement_zory_economic_school
+            }
+            add_modifier = {
+                name = zory_campaign_movement_attraction
+                months = 12
+            }
+        }
+        add_modifier = {
+            name = zory_campaign_bureaucracy_cost
+            months = 12
+        }
+    }
+}

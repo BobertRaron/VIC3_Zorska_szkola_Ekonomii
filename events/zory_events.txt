@@ -65,7 +65,7 @@ zory_events.4 = {
                 age = 35
                 is_agitator = yes
                 interest_group = ig_intelligentsia
-                ideology = ideology_zory_economic_school
+                ideology = ideology_krawczykism
                 traits = { charismatic persistent }
             }
             set_variable = zory_krawczyk_spawned

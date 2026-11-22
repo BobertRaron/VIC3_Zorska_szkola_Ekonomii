@@ -1,0 +1,9 @@
+﻿zory_campaign_movement_attraction = {
+    icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+    political_movement_pop_attraction_mult = 0.50
+}
+
+zory_campaign_bureaucracy_cost = {
+    icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+    country_bureaucracy_mult = -0.10
+}
