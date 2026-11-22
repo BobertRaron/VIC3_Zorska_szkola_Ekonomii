@@ -1,7 +1,7 @@
 ﻿movement_zory_economic_school = {
     category = movement_category_ideological
     ideology = ideology_zory_economic_school
-    character_ideologies = { ideology_zory_economic_school }
+    character_ideologies = { ideology_zory_economic_school, ideology_baronism , ideology_krawczykism}
 
     creation_trigger = {
        OR = {

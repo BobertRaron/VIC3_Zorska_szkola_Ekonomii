@@ -1,12 +1,12 @@
 ﻿je_zory_economic_school = {
     group = je_group_zory_economics
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    scripted_button = zory_promote_school_button
     weight = 200
     should_be_pinned_by_default_uninvolved_or_context = no
     should_be_pinned_by_default_involved = yes
     is_shown_when_inactive = { always = no }
-    activation_description = {always = yes
-}
+    activation_description = {always = yes}
     should_be_involved = { OR = { THIS = c:POL THIS = c:UKR } }
     should_show_when_not_involved = { always = no }
     possible = { always = yes }

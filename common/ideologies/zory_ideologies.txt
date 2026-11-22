@@ -93,8 +93,8 @@ ideology_baronism = {
     }
 }
 
-# Compromise ideology of the movement until the journal entry is resolved.
 ideology_zory_economic_school = {
+    character_ideology = yes
     priority = 100
     icon = "gfx/interface/icons/ideology_icons/paternalistic.dds"
     lawgroup_economic_system = {
