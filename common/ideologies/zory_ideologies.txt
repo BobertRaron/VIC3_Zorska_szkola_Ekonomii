@@ -1,32 +1,131 @@
-﻿ideology_krawczykism = {
-
+﻿# All three ideologies intentionally overlap with standard IG ideologies.
+# Priority determines which stance prevails where they cover the same law group.
+ideology_krawczykism = {
+    priority = 100
     icon = "gfx/interface/icons/ideology_icons/paternalistic.dds"
-
     lawgroup_economic_system = {
         law_traditionalism = strongly_disapprove
         law_agrarianism = disapprove
         law_industry_banned = strongly_disapprove
-        law_interventionism = approve
-        law_command_economy = strongly_approve
+        law_interventionism = strongly_approve
         law_laissez_faire = disapprove
         law_command_economy = neutral
         law_cooperative_ownership = neutral
         law_extraction_economy = disapprove
     }
+    lawgroup_childrens_rights = {
+        law_child_labor_allowed = strongly_disapprove
+        law_restricted_child_labor = approve
+        law_compulsory_primary_school = strongly_approve
+    }
+    lawgroup_education_system = {
+        law_no_schools = strongly_disapprove
+        law_religious_schools = neutral
+        law_private_schools = disapprove
+        law_public_schools = strongly_approve
+    }
+    lawgroup_rights_of_women = {
+        law_legal_guardianship = strongly_approve
+        law_propertied_women = disapprove
+        law_women_in_the_workplace = strongly_disapprove
+        law_womens_suffrage = strongly_disapprove
+    }
+    lawgroup_citizenship = {
+        law_ethnostate = strongly_approve
+        law_national_supremacy = approve
+        law_racial_segregation = neutral
+        law_cultural_exclusion = disapprove
+        law_multicultural = strongly_disapprove
+    }
 }
 
 ideology_baronism = {
-
+    priority = 100
     icon = "gfx/interface/icons/ideology_icons/laissez_faire.dds"
-
     lawgroup_economic_system = {
-        law_traditionalism = strongly_disapprove
-        law_agrarianism = disapprove
-        law_industry_banned = strongly_disapprove
-        law_interventionism = neutral
+        law_traditionalism = neutral
+        law_agrarianism = approve
+        law_industry_banned = disapprove
+        law_interventionism = disapprove
         law_laissez_faire = strongly_approve
         law_command_economy = strongly_disapprove
-        law_cooperative_ownership = disapprove
+        law_cooperative_ownership = strongly_disapprove
+        law_extraction_economy = neutral
+    }
+    lawgroup_childrens_rights = {
+        law_child_labor_allowed = strongly_approve
+        law_restricted_child_labor = disapprove
+        law_compulsory_primary_school = strongly_disapprove
+    }
+    lawgroup_education_system = {
+        law_no_schools = strongly_approve
+        law_religious_schools = neutral
+        law_private_schools = disapprove
+        law_public_schools = strongly_disapprove
+    }
+    lawgroup_rights_of_women = {
+        law_legal_guardianship = strongly_approve
+        law_propertied_women = disapprove
+        law_women_in_the_workplace = strongly_disapprove
+        law_womens_suffrage = strongly_disapprove
+    }
+    lawgroup_citizenship = {
+        law_ethnostate = strongly_approve
+        law_national_supremacy = approve
+        law_racial_segregation = neutral
+        law_cultural_exclusion = disapprove
+        law_multicultural = strongly_disapprove
+    }
+    lawgroup_church_and_state = {
+        law_state_religion = strongly_approve
+        law_freedom_of_conscience = disapprove
+        law_total_separation = strongly_disapprove
+        law_state_atheism = strongly_disapprove
+    }
+}
+
+# Compromise ideology of the movement until the journal entry is resolved.
+ideology_zory_economic_school = {
+    priority = 100
+    icon = "gfx/interface/icons/ideology_icons/paternalistic.dds"
+    lawgroup_economic_system = {
+        law_traditionalism = disapprove
+        law_agrarianism = neutral
+        law_industry_banned = strongly_disapprove
+        law_interventionism = approve
+        law_laissez_faire = approve
+        law_command_economy = disapprove
+        law_cooperative_ownership = neutral
         law_extraction_economy = disapprove
+    }
+    lawgroup_childrens_rights = {
+        law_child_labor_allowed = neutral
+        law_restricted_child_labor = approve
+        law_compulsory_primary_school = neutral
+    }
+    lawgroup_education_system = {
+        law_no_schools = neutral
+        law_religious_schools = approve
+        law_private_schools = neutral
+        law_public_schools = neutral
+    }
+    lawgroup_rights_of_women = {
+        law_legal_guardianship = strongly_approve
+        law_propertied_women = disapprove
+        law_women_in_the_workplace = strongly_disapprove
+        law_womens_suffrage = strongly_disapprove
+    }
+    lawgroup_citizenship = {
+        law_ethnostate = strongly_approve
+        law_national_supremacy = approve
+        law_racial_segregation = neutral
+        law_cultural_exclusion = disapprove
+        law_multicultural = strongly_disapprove
+    }
+    lawgroup_church_and_state = {
+        law_state_religion = approve
+        law_freedom_of_conscience = neutral
+        law_total_separation = disapprove
+        law_state_atheism = disapprove
     }
 }

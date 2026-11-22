@@ -1,84 +1,63 @@
-﻿
-je_zory_economic_school = {
-
+﻿je_zory_economic_school = {
     group = je_group_zory_economics
-
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-
     weight = 200
-
-    should_be_pinned_by_default_uninvolved_or_context = yes
-
-    is_shown_when_inactive = {
-    country_has_primary_culture = cu:polish
-
-    NOT = {
-        has_variable = zory_school_started
-    }
-}
-
-    possible = {
-        has_variable = zory_school_unlocked
-    }
-
+    should_be_pinned_by_default_uninvolved_or_context = no
+    should_be_pinned_by_default_involved = yes
+    is_shown_when_inactive = { always = no }
+    should_be_involved = { OR = { THIS = c:POL THIS = c:UKR } }
+    should_show_when_not_involved = { always = no }
+    possible = { always = yes }
     scripted_progress_bar = zory_economic_school_progress
 
     immediate = {
-        set_variable = zory_school_started
+        c:POL ?= {
+            create_political_movement = { movement_type = movement_zory_economic_school }
+            trigger_event = { id = zory_events.4 popup = yes }
+        }
+        c:UKR ?= {
+            create_political_movement = { movement_type = movement_zory_economic_school }
+        }
     }
 
+    # Each participant gets their own event, but choices modify one shared bar.
     on_monthly_pulse = {
-        random_events = {
-            70 = 0
-            30 = zory_events.1
+        effect = {
+            random = {
+                chance = 30
+                c:POL ?= { trigger_event = { id = zory_events.1 popup = yes } }
+            }
+            random = {
+                chance = 30
+                c:UKR ?= { trigger_event = { id = zory_events.1 popup = yes } }
+            }
         }
     }
 
     outcome = {
-
         header = zory_krawczyk_victory
         effect_header = je_standard_on_completion_header
         color = "gold_positive"
         conclusion_desc = zory_krawczyk_victory_desc
-
-        trigger = {
-            "scope:journal_entry.scripted_bar_progress(zory_economic_school_progress)" <= 0
-        }
-
+        trigger = { "scope:journal_entry.scripted_bar_progress(zory_economic_school_progress)" <= 0 }
         effect = {
-
-            ig:ig_intelligentsia = {
-                add_ideology = ideology_krawczykism
-            }
-
-            trigger_event = {
-                id = zory_events.2
-                popup = yes
-            }
+            set_global_variable = zory_school_resolved
+            set_global_variable = zory_krawczyk_won
+            c:POL ?= { zory_krawczyk_resolution_effect = yes }
+            c:UKR ?= { zory_krawczyk_resolution_effect = yes }
         }
     }
-
     outcome = {
-
         header = zory_baron_victory
         effect_header = je_standard_on_completion_header
         color = "gold_positive"
         conclusion_desc = zory_baron_victory_desc
-
-        trigger = {
-            "scope:journal_entry.scripted_bar_progress(zory_economic_school_progress)" >= 100
-        }
-
+        trigger = { "scope:journal_entry.scripted_bar_progress(zory_economic_school_progress)" >= 100 }
         effect = {
-
-            ig:ig_intelligentsia = {
-                add_ideology = ideology_baronism
-            }
-
-            trigger_event = {
-                id = zory_events.3
-                popup = yes
-            }
+            set_global_variable = zory_school_resolved
+            set_global_variable = zory_baron_won
+            c:POL ?= { zory_baron_resolution_effect = yes }
+            c:UKR ?= { zory_baron_resolution_effect = yes }
         }
     }
 }

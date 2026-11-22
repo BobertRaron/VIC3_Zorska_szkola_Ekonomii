@@ -1,6 +1,4 @@
 ﻿je_group_zory_economics = {
-
-    context = country
-
+    context = none
     illustration = "gfx/interface/illustrations/journal/je_group_illu_international_situations.dds"
 }

@@ -1,29 +1,17 @@
-﻿
-zory_found_economic_school = {
-
+﻿zory_found_economic_school = {
     is_shown = {
         is_ai = no
-
-        country_has_primary_culture = cu:polish
-
-        NOT = {
-            has_variable = zory_school_unlocked
-        }
-
-        NOT = {
-            has_variable = zory_school_started
-        }
+        OR = { THIS = c:POL THIS = c:UKR }
+        NOT = { has_global_variable = zory_school_started }
     }
-
     possible = {
         has_technology_researched = academia
+        exists = c:POL
+        exists = c:UKR
     }
-
     when_taken = {
-        set_variable = zory_school_unlocked
+        set_global_variable = zory_school_started
+        add_contextless_journal_entry = je_zory_economic_school
     }
-
-    ai_chance = {
-        value = 0
-    }
+    ai_chance = { value = 0 }
 }

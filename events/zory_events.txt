@@ -1,98 +1,74 @@
 ﻿namespace = zory_events
 
 zory_events.1 = {
-
     type = country_event
     placement = root
-
     title = zory_events.1.t
     desc = zory_events.1.d
     flavor = zory_events.1.f
-
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-
     duration = 3
-
     option = {
-
         name = zory_events.1.a
-
-        scope:journal_entry = {
-            add_progress = {
-                name = zory_economic_school_progress
-                value = -10
-            }
-        }
-
-        ai_chance = {
-            base = 50
-        }
+        scope:journal_entry = { add_progress = { name = zory_economic_school_progress value = -10 } }
+        ai_chance = { base = 50 }
     }
-
     option = {
-
         name = zory_events.1.b
-
-        scope:journal_entry = {
-            add_progress = {
-                name = zory_economic_school_progress
-                value = 10
-            }
-        }
-
-        ai_chance = {
-            base = 50
-        }
+        scope:journal_entry = { add_progress = { name = zory_economic_school_progress value = 10 } }
+        ai_chance = { base = 50 }
     }
-
-    option = {
-        name = zory_events.1.c
-        default_option = yes
-
-        ai_chance = {
-            base = 0
-        }
-    }
+    option = { name = zory_events.1.c default_option = yes ai_chance = { base = 0 } }
 }
 
 zory_events.2 = {
-
     type = country_event
     placement = root
-
     title = zory_events.2.t
     desc = zory_events.2.d
     flavor = zory_events.2.f
-
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-
-    event_image = {
-    texture = "gfx/event_pictures/zory_group_photo.dds"
-    }
-
     duration = 3
-
-    option = {
-        name = zory_events.2.a
-        default_option = yes
-    }
+    option = { name = zory_events.2.a default_option = yes }
 }
 
 zory_events.3 = {
-
     type = country_event
     placement = root
-
     title = zory_events.3.t
     desc = zory_events.3.d
     flavor = zory_events.3.f
-
+    event_image = { texture = "gfx/event_pictures/zory_group_photo.dds" }
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
-
     duration = 3
+    option = { name = zory_events.3.a default_option = yes }
+}
 
+
+zory_events.4 = {
+    type = country_event
+    placement = root
+    title = zory_events.4.t
+    desc = zory_events.4.d
+    flavor = zory_events.4.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
     option = {
-        name = zory_events.3.a
+        name = zory_events.4.a
         default_option = yes
+        if = {
+            limit = { NOT = { has_variable = zory_krawczyk_spawned } }
+            create_character = {
+                first_name = Zory_Von_Krawczyk_First
+                last_name = Zory_Von_Krawczyk_Last
+                culture = cu:polish
+                age = 35
+                is_agitator = yes
+                interest_group = ig_intelligentsia
+                ideology = ideology_zory_economic_school
+                traits = { charismatic persistent }
+            }
+            set_variable = zory_krawczyk_spawned
+        }
     }
 }

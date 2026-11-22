@@ -1,0 +1,38 @@
+﻿# Call in COUNTRY scope. Only modifies characters with the transitional Zory ideology.
+zory_krawczyk_resolution_effect = {
+    every_political_movement = {
+        limit = { is_political_movement_type = movement_zory_economic_school }
+        set_core_ideology = ideology_krawczykism
+        remove_character_ideology = ideology_zory_economic_school
+        add_character_ideology = ideology_krawczykism
+    }
+    every_scope_character = {
+        limit = { has_ideology = ideology:ideology_zory_economic_school }
+        set_ideology = ideology:ideology_krawczykism
+    }
+    ig:ig_intelligentsia = {
+        if = { limit = { has_ideology = ideology:ideology_baronism } remove_ideology = ideology_baronism }
+        if = { limit = { has_ideology = ideology:ideology_zory_economic_school } remove_ideology = ideology_zory_economic_school }
+        if = { limit = { NOT = { has_ideology = ideology:ideology_krawczykism } } add_ideology = ideology_krawczykism }
+    }
+    trigger_event = { id = zory_events.2 popup = yes }
+}
+
+zory_baron_resolution_effect = {
+    every_political_movement = {
+        limit = { is_political_movement_type = movement_zory_economic_school }
+        set_core_ideology = ideology_baronism
+        remove_character_ideology = ideology_zory_economic_school
+        add_character_ideology = ideology_baronism
+    }
+    every_scope_character = {
+        limit = { has_ideology = ideology:ideology_zory_economic_school }
+        set_ideology = ideology:ideology_baronism
+    }
+    ig:ig_intelligentsia = {
+        if = { limit = { has_ideology = ideology:ideology_krawczykism } remove_ideology = ideology_krawczykism }
+        if = { limit = { has_ideology = ideology:ideology_zory_economic_school } remove_ideology = ideology_zory_economic_school }
+        if = { limit = { NOT = { has_ideology = ideology:ideology_baronism } } add_ideology = ideology_baronism }
+    }
+    trigger_event = { id = zory_events.3 popup = yes }
+}

@@ -1,0 +1,26 @@
+﻿movement_zory_economic_school = {
+    category = ideological
+    ideology = ideology_zory_economic_school
+    character_ideologies = { ideology_zory_economic_school }
+
+    creation_trigger = {
+        OR = { THIS = c:POL THIS = c:UKR }
+        has_global_variable = zory_school_started
+        NOT = { has_global_variable = zory_school_resolved }
+    }
+    creation_weight = { value = 100 }
+    character_support_trigger = {
+        has_ideology = ideology:ideology_zory_economic_school
+    }
+    character_support_weight = { value = 100 }
+    can_pressure_interest_group = { is_interest_group_type = ig_intelligentsia }
+    pop_support_trigger = { always = yes }
+    pop_support_weight = {
+        value = 0
+        if = { limit = { is_pop_type = academics } add = 100 }
+        if = { limit = { is_pop_type = bureaucrats } add = 50 }
+        if = { limit = { is_pop_type = clerks } add = 25 }
+        if = { limit = { is_pop_type = capitalists } add = 20 }
+        if = { limit = { is_pop_type = aristocrats } add = 20 }
+    }
+}
