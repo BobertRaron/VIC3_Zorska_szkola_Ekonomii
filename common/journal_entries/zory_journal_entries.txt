@@ -5,6 +5,8 @@
     should_be_pinned_by_default_uninvolved_or_context = no
     should_be_pinned_by_default_involved = yes
     is_shown_when_inactive = { always = no }
+    activation_description = {always = yes
+}
     should_be_involved = { OR = { THIS = c:POL THIS = c:UKR } }
     should_show_when_not_involved = { always = no }
     possible = { always = yes }
@@ -12,11 +14,15 @@
 
     immediate = {
         c:POL ?= {
-            create_political_movement = { movement_type = movement_zory_economic_school }
+                    create_political_movement = {
+            type = movement_zory_economic_school
+        }
             trigger_event = { id = zory_events.4 popup = yes }
         }
         c:UKR ?= {
-            create_political_movement = { movement_type = movement_zory_economic_school }
+                        create_political_movement = {
+                type = movement_zory_economic_school
+            }
         }
     }
 

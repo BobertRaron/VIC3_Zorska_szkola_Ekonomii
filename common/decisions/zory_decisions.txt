@@ -1,7 +1,10 @@
 ﻿zory_found_economic_school = {
     is_shown = {
         is_ai = no
-        OR = { THIS = c:POL THIS = c:UKR }
+        OR = {
+        country_has_primary_culture = cu:polish
+        country_has_primary_culture = cu:ukrainian
+    }
         NOT = { has_global_variable = zory_school_started }
     }
     possible = {

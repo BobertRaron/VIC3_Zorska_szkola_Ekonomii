@@ -1,10 +1,13 @@
 ﻿movement_zory_economic_school = {
-    category = ideological
+    category = movement_category_ideological
     ideology = ideology_zory_economic_school
     character_ideologies = { ideology_zory_economic_school }
 
     creation_trigger = {
-        OR = { THIS = c:POL THIS = c:UKR }
+       OR = {
+        country_has_primary_culture = cu:polish
+        country_has_primary_culture = cu:ukrainian
+    }
         has_global_variable = zory_school_started
         NOT = { has_global_variable = zory_school_resolved }
     }
