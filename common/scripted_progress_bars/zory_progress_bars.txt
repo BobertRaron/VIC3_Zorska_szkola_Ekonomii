@@ -14,5 +14,42 @@
         if = { limit = { c:POL ?= { has_law = law_type:law_laissez_faire } } add = 1 }
         if = { limit = { c:UKR ?= { has_law = law_type:law_interventionism } } add = -1 }
         if = { limit = { c:UKR ?= { has_law = law_type:law_laissez_faire } } add = 1 }
+
+
+# Polska ma wyzszy PKB na mieszkanca
+progress_condition = {
+    limit = {
+        exists = c:POL
+        exists = c:UKR
+
+        c:POL = {
+            country_gdp_per_capita > c:UKR.country_gdp_per_capita
+        }
+    }
+
+    add = {
+        desc = zory_gdppc_poland_ahead
+        value = -1
+    }
+}
+
+# Ukraina ma wyzszy PKB na mieszkanca
+progress_condition = {
+    limit = {
+        exists = c:POL
+        exists = c:UKR
+
+        c:UKR = {
+            country_gdp_per_capita > c:POL.country_gdp_per_capita
+        }
+    }
+
+    add = {
+        desc = zory_gdppc_ukraine_ahead
+        value = 1
+    }
+}
+
+
     }
 }

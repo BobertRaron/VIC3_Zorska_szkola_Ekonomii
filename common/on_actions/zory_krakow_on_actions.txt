@@ -1,0 +1,130 @@
+﻿# Żorska Szkoła Ekonomii — Kraków i powstanie galicyjskie
+# Cel: sprawdzanie warunków, dołączenie sojuszników i rozstrzygnięcie wojny.
+
+on_monthly_pulse = {
+    on_actions = { zory_krakow_monthly_check }
+}
+
+zory_krakow_monthly_check = {
+    effect = {
+        if = {
+            limit = {
+                exists = c:KRA
+                exists = c:AUS
+                c:KRA = {
+                    has_technology_researched = nationalism
+                    NOT = { has_variable = zory_krakow_revolt_started }
+                    is_at_war = no
+                }
+                c:AUS = {
+                    is_at_war = no
+                    any_scope_state = { is_homeland = cu:polish }
+                }
+                cu:polish = { culture_current_fervor >= 40 }
+            }
+            c:KRA = {
+                trigger_event = { id = zory_krakow.1 popup = yes }
+            }
+        }
+    }
+}
+
+# Dołączenie wspierających państw następuje przy otwarciu właściwego DP.
+# Daje to Polsce i Ukrainie czas na odpowiedź przed jego wybuchem.
+on_diplomatic_play_started = {
+    on_actions = { zory_krakow_join_backers }
+}
+
+zory_krakow_join_backers = {
+    effect = {
+        if = {
+            limit = {
+                initiator_is = c:AUS
+                target_is = c:KRA
+                c:KRA = { has_variable = zory_krakow_revolt_started }
+            }
+            if = {
+                limit = {
+                    exists = c:POL
+                    c:POL = { has_variable = zory_krakow_polish_support }
+                }
+                add_target_backers = { c:POL }
+            }
+            if = {
+                limit = {
+                    exists = c:UKR
+                    c:UKR = { has_variable = zory_krakow_ukrainian_support }
+                }
+                add_target_backers = { c:UKR }
+            }
+        }
+    }
+}
+
+# Kapitulacja Austrii w tym konkretnym konflikcie jest warunkiem zwycięstwa.
+on_capitulation = {
+    on_actions = { zory_krakow_record_austrian_defeat }
+}
+
+zory_krakow_record_austrian_defeat = {
+    effect = {
+        if = {
+            limit = {
+                exists = c:KRA
+                scope:diplomatic_play = {
+                    initiator_is = c:AUS
+                    initiator_is = ROOT
+                    target_is = c:KRA
+                }
+                c:KRA = { has_variable = zory_krakow_revolt_started }
+            }
+            c:KRA = { set_variable = zory_krakow_austria_defeated }
+        }
+    }
+}
+
+on_war_end = {
+    on_actions = { zory_krakow_resolve_after_war }
+}
+
+zory_krakow_resolve_after_war = {
+    effect = {
+        if = {
+            limit = {
+                initiator_is = c:AUS
+                target_is = c:KRA
+            }
+            if = {
+                limit = {
+                    exists = c:POL
+                    exists = c:KRA
+                    c:KRA = {
+                        has_variable = zory_krakow_revolt_started
+                        has_variable = zory_krakow_austria_defeated
+                    }
+                }
+                c:KRA = {
+                    if = {
+                        limit = { is_subject = yes }
+                        make_independent = yes
+                    }
+                }
+                c:POL = {
+                    annex = c:KRA
+                    trigger_event = { id = zory_krakow.5 popup = yes }
+                }
+            }
+            else_if = {
+                limit = {
+                    exists = c:KRA
+                    c:KRA = { has_variable = zory_krakow_revolt_started }
+                }
+                c:KRA = {
+                    trigger_event = { id = zory_krakow.6 popup = yes }
+                }
+            }
+            c:POL ?= { remove_variable = zory_krakow_polish_support }
+            c:UKR ?= { remove_variable = zory_krakow_ukrainian_support }
+        }
+    }
+}

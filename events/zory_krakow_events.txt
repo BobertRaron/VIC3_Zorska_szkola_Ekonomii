@@ -1,0 +1,136 @@
+﻿namespace = zory_krakow
+
+# 1. Zryw krakowski — uruchamiany po nacjonalizmie i 40 szału kultury polskiej.
+zory_krakow.1 = {
+    type = country_event
+    placement = root
+    title = zory_krakow.1.t
+    desc = zory_krakow.1.d
+    flavor = zory_krakow.1.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
+
+    immediate = { set_variable = zory_krakow_revolt_started }
+
+    option = {
+        name = zory_krakow.1.a
+        default_option = yes
+        # Tylko ziemie bezpośrednio należące do Austrii
+        # i będące ojczyzną kultury polskiej.
+        c:AUS = {
+            every_scope_state = {
+                limit = { is_homeland = cu:polish }
+                set_state_owner = c:KRA
+            }
+        }
+        c:POL ?= {
+            trigger_event = { id = zory_krakow.2 popup = yes }
+        }
+        c:UKR ?= {
+            trigger_event = { id = zory_krakow.3 popup = yes }
+        }
+        # Gra umożliwia dokonanie wyboru zanim Austria wystąpi z ultimatum.
+        trigger_event = { id = zory_krakow.4 days = 30 popup = yes }
+    }
+
+    option = {
+        name = zory_krakow.1.b
+        # Odmowa kończy łańcuch w tej rozgrywce.
+    }
+}
+
+# 2. Polska Kongresowa decyduje o poparciu Krakowa.
+zory_krakow.2 = {
+    type = country_event
+    placement = root
+    title = zory_krakow.2.t
+    desc = zory_krakow.2.d
+    flavor = zory_krakow.2.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
+
+    option = {
+        name = zory_krakow.2.a
+        set_variable = zory_krakow_polish_support
+    }
+    option = {
+        name = zory_krakow.2.b
+        default_option = yes
+    }
+}
+
+# 3. Ukraina decyduje o poparciu Krakowa.
+zory_krakow.3 = {
+    type = country_event
+    placement = root
+    title = zory_krakow.3.t
+    desc = zory_krakow.3.d
+    flavor = zory_krakow.3.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
+
+    option = {
+        name = zory_krakow.3.a
+        set_variable = zory_krakow_ukrainian_support
+    }
+    option = {
+        name = zory_krakow.3.b
+        default_option = yes
+    }
+}
+
+# 4. Ultimatum Wiednia: austriacki cel wojenny to aneksja Krakowa.
+zory_krakow.4 = {
+    type = country_event
+    placement = root
+    title = zory_krakow.4.t
+    desc = zory_krakow.4.d
+    flavor = zory_krakow.4.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
+
+    option = {
+        name = zory_krakow.4.a
+        default_option = yes
+
+        if = {
+            limit = { is_direct_subject_of = c:AUS }
+            create_diplomatic_play = {
+                initiator = c:AUS
+                type = dp_annex_subject
+                escalation = 0
+            }
+        }
+        else = {
+            create_diplomatic_play = {
+                initiator = c:AUS
+                type = dp_annex_country
+                escalation = 0
+            }
+        }
+    }
+}
+
+# 5. Zwycięstwo: Polska Kongresowa już otrzymała Kraków i jego ziemie.
+zory_krakow.5 = {
+    type = country_event
+    placement = root
+    title = zory_krakow.5.t
+    desc = zory_krakow.5.d
+    flavor = zory_krakow.5.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
+    option = { name = zory_krakow.5.a default_option = yes }
+}
+
+# 6. Wojna się skończyła bez kapitulacji Austrii — brak aneksji przez POL.
+zory_krakow.6 = {
+    type = country_event
+    placement = root
+    title = zory_krakow.6.t
+    desc = zory_krakow.6.d
+    flavor = zory_krakow.6.f
+    icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+    duration = 3
+    option = { name = zory_krakow.6.a default_option = yes }
+}
