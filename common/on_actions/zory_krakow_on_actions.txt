@@ -18,7 +18,7 @@ zory_krakow_monthly_check = {
                 }
                 c:AUS = {
                     is_at_war = no
-                    any_scope_state = { is_homeland = cu:polish }
+                    any_scope_state = { state_region = { is_homeland = cu:polish } }
                 }
                 cu:polish = { culture_current_fervor >= 40 }
             }
@@ -39,9 +39,8 @@ zory_krakow_join_backers = {
     effect = {
         if = {
             limit = {
-                initiator_is = c:AUS
-                target_is = c:KRA
-                c:KRA = { has_variable = zory_krakow_revolt_started }
+                scope:initiator = { has_variable = zory_krakow_austria_initiator }
+                scope:target = { has_variable = zory_krakow_revolt_started }
             }
             if = {
                 limit = {
@@ -70,13 +69,12 @@ zory_krakow_record_austrian_defeat = {
     effect = {
         if = {
             limit = {
+                has_variable = zory_krakow_austria_initiator
                 exists = c:KRA
                 scope:diplomatic_play = {
-                    initiator_is = c:AUS
-                    initiator_is = ROOT
-                    target_is = c:KRA
+                    scope:initiator = { has_variable = zory_krakow_austria_initiator }
+                    scope:target = { has_variable = zory_krakow_revolt_started }
                 }
-                c:KRA = { has_variable = zory_krakow_revolt_started }
             }
             c:KRA = { set_variable = zory_krakow_austria_defeated }
         }
@@ -91,8 +89,8 @@ zory_krakow_resolve_after_war = {
     effect = {
         if = {
             limit = {
-                initiator_is = c:AUS
-                target_is = c:KRA
+                scope:actor = { has_variable = zory_krakow_austria_initiator }
+                scope:target = { has_variable = zory_krakow_revolt_started }
             }
             if = {
                 limit = {
@@ -125,6 +123,7 @@ zory_krakow_resolve_after_war = {
             }
             c:POL ?= { remove_variable = zory_krakow_polish_support }
             c:UKR ?= { remove_variable = zory_krakow_ukrainian_support }
+            scope:actor = { remove_variable = zory_krakow_austria_initiator }
         }
     }
 }

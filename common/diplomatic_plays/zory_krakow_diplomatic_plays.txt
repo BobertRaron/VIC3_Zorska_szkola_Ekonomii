@@ -1,0 +1,16 @@
+﻿# Specjalna rozgrywka dla austriackiego ultimatum.
+# Nie nalezy mylic typu diplomatic play z celem wojennym.
+dp_zory_krakow_annex = {
+    war_goal = annex_country
+    requires_interest_marker = no
+    texture = "gfx/interface/icons/war_goals/annex_country.dds"
+
+    # Zdarzenie inicjuje rozgrywke skryptowo.
+    selectable_in_lens = { always = no }
+    possible = { always = yes }
+
+    ai_acceptance_max = 75
+    on_weekly_pulse = {}
+    on_war_begins = {}
+    on_war_end = {}
+}
