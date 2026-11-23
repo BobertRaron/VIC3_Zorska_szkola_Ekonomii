@@ -12,6 +12,8 @@ zory_krakow.1 = {
 
     immediate = { set_variable = zory_krakow_revolt_started }
 
+    
+
     option = {
         name = zory_krakow.1.a
         default_option = yes
@@ -32,13 +34,25 @@ zory_krakow.1 = {
         # Gra umożliwia dokonanie wyboru zanim Austria wystąpi z ultimatum.
         trigger_event = { id = zory_krakow.4 days = 30 popup = yes }
     }
+    # Oba panstwa musza byc niepodlegle w momencie zaproszenia.
+        if = {
+            limit = {
+                exists = c:POL
+                exists = c:UKR
+                c:POL = { is_subject = no }
+                c:UKR = { is_subject = no }
+            }
+            c:POL = { trigger_event = { id = zory_krakow.2 popup = yes } }
+            c:UKR = { trigger_event = { id = zory_krakow.3 popup = yes } }
+        }
+        # Gra umożliwia dokonanie wyboru zanim Austria wystąpi z ultimatum.
+        trigger_event = { id = zory_krakow.4 days = 30 popup = yes }
+    }
 
     option = {
         name = zory_krakow.1.b
         # Odmowa kończy łańcuch w tej rozgrywce.
     }
-}
-
 # 2. Polska Kongresowa decyduje o poparciu Krakowa.
 zory_krakow.2 = {
     type = country_event
@@ -127,6 +141,11 @@ zory_krakow.4 = {
 }
 
 # 5. Zwycięstwo: Polska Kongresowa już otrzymała Kraków i jego ziemie.
+
+# 5. Zwyciestwo w wojnie z Austria: Polska Kongresowa anektuje Krakow.
+# Event uruchamiany przez zory_krakow_resolve_after_war dla POL.
+# Nie da sie przeprowadzic aneksji przez samo wywolanie eventu z konsoli:
+# potrzebne sa DWA osobne znaczniki (po kapitulacji i po zakonczeniu wojny).
 zory_krakow.5 = {
     type = country_event
     placement = root
@@ -135,8 +154,36 @@ zory_krakow.5 = {
     flavor = zory_krakow.5.f
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
     duration = 3
-    option = { name = zory_krakow.5.a default_option = yes }
+
+    # Wykonywane w chwili utworzenia wydarzenia, przed wyswietleniem okna.
+    immediate = {
+        if = {
+            limit = {
+                # Zmienna stworzona w on_war_end tylko po zwyciestwie Krakowa.
+                has_variable = zory_krakow_victory_pending
+                NOT = { has_variable = zory_krakow_reunification_done }
+                exists = c:KRA
+                exists = c:POL
+                c:KRA = {
+                    has_variable = zory_krakow_revolt_started
+                    has_variable = zory_krakow_austria_defeated
+                }
+            }
+
+            # ROOT to Polska Kongresowa (POL). Ustawiamy znacznik przed
+            # aneksja, aby operacja byla jednorazowa.
+            set_variable = zory_krakow_reunification_done
+            remove_variable = zory_krakow_victory_pending
+            annex = c:KRA
+        }
+    }
+
+    option = {
+        name = zory_krakow.5.a
+        default_option = yes
+    }
 }
+
 
 # 6. Wojna się skończyła bez kapitulacji Austrii — brak aneksji przez POL.
 zory_krakow.6 = {

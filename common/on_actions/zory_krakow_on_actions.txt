@@ -41,6 +41,10 @@ zory_krakow_join_backers = {
             limit = {
                 scope:initiator = { has_variable = zory_krakow_austria_initiator }
                 scope:target = { has_variable = zory_krakow_revolt_started }
+                exists = c:POL
+                exists = c:UKR
+                c:POL = { is_subject = no }
+                c:UKR = { is_subject = no }
             }
             if = {
                 limit = {
@@ -60,7 +64,9 @@ zory_krakow_join_backers = {
     }
 }
 
-# Kapitulacja Austrii w tym konkretnym konflikcie jest warunkiem zwycięstwa.
+# Kapitulacja: ROOT to kraj kapitulujacy; scope:diplomatic_play to wojna.
+# Dlatego porazke Austrii zapisujemy wylacznie, gdy to sama Austria
+# kapituluje w NASZYM typie posuniecia dyplomatycznego.
 on_capitulation = {
     on_actions = { zory_krakow_record_austrian_defeat }
 }
@@ -69,11 +75,13 @@ zory_krakow_record_austrian_defeat = {
     effect = {
         if = {
             limit = {
+                # ROOT musi byc Austria; zmienna przypisywana jest tylko AUS
+                # w zory_krakow.4 (przy rozpoczeciu ultimatum).
                 has_variable = zory_krakow_austria_initiator
                 exists = c:KRA
+                c:KRA = { has_variable = zory_krakow_revolt_started }
                 scope:diplomatic_play = {
-                    scope:initiator = { has_variable = zory_krakow_austria_initiator }
-                    scope:target = { has_variable = zory_krakow_revolt_started }
+                    is_diplomatic_play_type = dp_zory_krakow_annex
                 }
             }
             c:KRA = { set_variable = zory_krakow_austria_defeated }
@@ -81,6 +89,8 @@ zory_krakow_record_austrian_defeat = {
     }
 }
 
+# Root on_war_end to diplomatic_play.
+# scope:actor = inicjator (Austria), scope:target = cel (Krakow).
 on_war_end = {
     on_actions = { zory_krakow_resolve_after_war }
 }
@@ -89,9 +99,12 @@ zory_krakow_resolve_after_war = {
     effect = {
         if = {
             limit = {
+                is_diplomatic_play_type = dp_zory_krakow_annex
                 scope:actor = { has_variable = zory_krakow_austria_initiator }
                 scope:target = { has_variable = zory_krakow_revolt_started }
             }
+
+            # Warunek zwyciestwa: Austria rzeczywiscie skapitulowala.
             if = {
                 limit = {
                     exists = c:POL
@@ -101,15 +114,15 @@ zory_krakow_resolve_after_war = {
                         has_variable = zory_krakow_austria_defeated
                     }
                 }
-                c:KRA = {
-                    if = {
-                        limit = { is_subject = yes }
-                        make_independent = yes
-                    }
-                }
                 c:POL = {
-                    annex = c:KRA
-                    trigger_event = { id = zory_krakow.5 popup = yes }
+                    if = {
+                        limit = {
+                            NOT = { has_variable = zory_krakow_reunification_done }
+                        }
+                        # Tylko ten znacznik uprawnia event .5 do aneksji.
+                        set_variable = zory_krakow_victory_pending
+                        trigger_event = { id = zory_krakow.5 popup = yes }
+                    }
                 }
             }
             else_if = {
@@ -121,6 +134,8 @@ zory_krakow_resolve_after_war = {
                     trigger_event = { id = zory_krakow.6 popup = yes }
                 }
             }
+
+            # Sprzatanie znacznikow deklaracji wsparcia.
             c:POL ?= { remove_variable = zory_krakow_polish_support }
             c:UKR ?= { remove_variable = zory_krakow_ukrainian_support }
             scope:actor = { remove_variable = zory_krakow_austria_initiator }

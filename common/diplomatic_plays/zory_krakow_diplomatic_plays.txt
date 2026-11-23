@@ -10,7 +10,39 @@ dp_zory_krakow_annex = {
     possible = { always = yes }
 
     ai_acceptance_max = 75
-    on_weekly_pulse = {}
+    on_weekly_pulse = {
+    # Uczestnicy, ktorzy wybrali pomoc, sa dopisywani do strony Krakowa.
+    # Tygodniowy puls to zabezpieczenie przed zbyt wczesnym
+    # wywolaniem on_diplomatic_play_started.
+    if = {
+        limit = {
+            exists = c:KRA
+            exists = c:POL
+            exists = c:UKR
+            c:UKR = { is_subject = no }
+            c:POL = {
+                has_variable = zory_krakow_polish_support
+                is_subject = no
+                NOT = { is_diplomatic_play_ally_of = c:KRA }
+            }
+        }
+        add_target_backers = { c:POL }
+    }
+    if = {
+        limit = {
+            exists = c:KRA
+            exists = c:UKR
+            exists = c:POL
+            c:POL = { is_subject = no }
+            c:UKR = {
+                has_variable = zory_krakow_ukrainian_support
+                is_subject = no
+                NOT = { is_diplomatic_play_ally_of = c:KRA }
+            }
+        }
+        add_target_backers = { c:UKR }
+    }
+}
     on_war_begins = {}
     on_war_end = {}
 }
