@@ -89,20 +89,33 @@ zory_krakow.4 = {
     icon = "gfx/interface/icons/event_icons/event_portrait.dds"
     duration = 3
 
-    option = {
+        option = {
         name = zory_krakow.4.a
         default_option = yes
 
-        # Zapamietujemy Austrie jako inicjatora tego konkretnego kryzysu.
-        # Oddzielny typ DP ma cel wojenny annex_country.
         if = {
             limit = {
                 exists = c:AUS
                 exists = c:KRA
-                c:KRA = { has_variable = zory_krakow_revolt_started }
             }
+
+            # Jesli Krakow jest poddanym,
+            # najpierw uzyskuje niepodleglosc.
+            c:KRA = {
+                if = {
+                    limit = {
+                        is_subject = yes
+                    }
+
+                    make_independent = yes
+                }
+            }
+
+            # Austria rozpoczyna konflikt
+            # przeciw niepodleglemu Krakowowi.
             c:AUS = {
                 set_variable = zory_krakow_austria_initiator
+
                 create_diplomatic_play = {
                     type = dp_zory_krakow_annex
                     target_country = c:KRA
